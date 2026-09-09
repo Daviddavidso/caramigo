@@ -18,6 +18,9 @@
 
 <a class="skip" href="#contenido">Saltar al contenido principal</a>
 
+<div class="progress" aria-hidden="true"><i id="progress-bar"></i></div>
+<div class="grain" aria-hidden="true"></div>
+
 <!-- ============ HERO ============ -->
 <div class="stage">
   <!-- Decoración. Sin atributo autoplay: lo arranca el JS, de modo que el botón
@@ -91,7 +94,7 @@
     <button class="vid-toggle" id="vid-toggle" type="button" data-state="playing">
       <svg viewBox="0 0 16 16" aria-hidden="true" class="ic-pause"><rect x="4" y="3" width="3" height="10" fill="currentColor"/><rect x="9" y="3" width="3" height="10" fill="currentColor"/></svg>
       <svg viewBox="0 0 16 16" aria-hidden="true" class="ic-play"><path d="M5 3l8 5-8 5z" fill="currentColor"/></svg>
-      <span class="vid-label">Pausar vídeo de fondo</span>
+      <span class="vid-label">Pausar el movimiento</span>
     </button>
 
     <a class="scroll-cue" href="#vehiculos">
@@ -121,11 +124,42 @@
 
 <main id="contenido">
 
+  <!-- ============ CINTA DE MARCAS ============ -->
+  <section class="ticker" aria-labelledby="t-marcas">
+    <h2 class="sr-only" id="t-marcas">Marcas disponibles en stock</h2>
+    <div class="ticker-mask">
+      <ul class="ticker-row" role="list">
+        <li>Mercedes-Benz</li><li>BMW</li><li>Audi</li><li>Porsche</li><li>Toyota</li>
+        <li>Land Rover</li><li>Volkswagen</li><li>Cupra</li><li>MINI</li><li>Peugeot</li>
+        <li>Škoda</li><li>Kia</li><li>Mazda</li><li>Renault</li><li>Nissan</li>
+        <li>Hyundai</li><li>Citroën</li><li>Ford</li><li>Opel</li>
+      </ul>
+      <ul class="ticker-row" role="list" aria-hidden="true">
+        <li>Mercedes-Benz</li><li>BMW</li><li>Audi</li><li>Porsche</li><li>Toyota</li>
+        <li>Land Rover</li><li>Volkswagen</li><li>Cupra</li><li>MINI</li><li>Peugeot</li>
+        <li>Škoda</li><li>Kia</li><li>Mazda</li><li>Renault</li><li>Nissan</li>
+        <li>Hyundai</li><li>Citroën</li><li>Ford</li><li>Opel</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ DESTACADOS (carrusel cinematográfico) ============ -->
+  <section class="reel" id="destacados" aria-labelledby="t-reel">
+    <div class="reel-sticky">
+      <div class="wrap reel-head">
+        <p class="eyebrow"><span class="num-tag">01</span> Selección</p>
+        <h2 id="t-reel">Los que se miran dos veces</h2>
+        <p class="reel-hint" aria-hidden="true">Desplázate para recorrerlos</p>
+      </div>
+      <ul class="reel-track" id="reel-track" role="list"></ul>
+    </div>
+  </section>
+
   <!-- ============ CATÁLOGO ============ -->
   <section class="sec sec-stock" id="vehiculos" aria-labelledby="t-stock">
     <div class="wrap">
       <div class="sec-head">
-        <p class="eyebrow">Stock actual</p>
+        <p class="eyebrow"><span class="num-tag">02</span> Stock actual</p>
         <h2 id="t-stock">Coches disponibles</h2>
         <p class="lead">Cada vehículo pasa una revisión completa antes de entrar en stock. Historial verificado, precio cerrado y entrega en cualquier punto de España.</p>
       </div>
@@ -185,19 +219,46 @@
     </div>
   </section>
 
-  <!-- ============ POR QUÉ ============ -->
+  <!-- ============ PROCESO ============ -->
   <section class="sec sec-why" id="por-que" aria-labelledby="t-why">
     <div class="wrap">
       <div class="sec-head">
-        <p class="eyebrow">Por qué CarAmigo</p>
-        <h2 id="t-why">Todo lo que necesitas en un solo lugar</h2>
+        <p class="eyebrow"><span class="num-tag">03</span> Por qué CarAmigo</p>
+        <h2 id="t-why">Todo lo que necesitas<br>en un solo lugar</h2>
         <p class="lead">Seleccionamos cuidadosamente cada vehículo para ofrecer coches revisados, con historial transparente y listos para disfrutar desde el primer día.</p>
       </div>
-      <ul class="feats" role="list">
-        <li><img src="img/brand/f-precio.png" alt="" width="48" height="48"><h3>Precios competitivos</h3><p>Vehículos de calidad con precios ajustados al mercado para ofrecerte la mejor relación calidad-precio.</p></li>
-        <li><img src="img/brand/f-entrega.png" alt="" width="48" height="48"><h3>Entrega a domicilio</h3><p>Recibe tu nuevo coche en cualquier punto de España de forma rápida, cómoda y totalmente segura.</p></li>
-        <li><img src="img/brand/f-financiacion.png" alt="" width="48" height="48"><h3>Financiación fácil</h3><p>Opciones de financiación flexibles y un proceso sencillo para que estrenes coche sin complicaciones.</p></li>
-        <li><img src="img/brand/f-revisados.png" alt="" width="48" height="48"><h3>Vehículos revisados</h3><p>Todos nuestros vehículos pasan una revisión completa para garantizar seguridad, fiabilidad y tranquilidad.</p></li>
+      <ol class="feats" role="list">
+        <li>
+          <p class="feat-n" aria-hidden="true">01</p>
+          <img src="img/brand/f-precio.png" alt="" width="48" height="48">
+          <h3>Precios competitivos</h3>
+          <p>Vehículos de calidad con precios ajustados al mercado para ofrecerte la mejor relación calidad-precio.</p>
+        </li>
+        <li>
+          <p class="feat-n" aria-hidden="true">02</p>
+          <img src="img/brand/f-entrega.png" alt="" width="48" height="48">
+          <h3>Entrega a domicilio</h3>
+          <p>Recibe tu nuevo coche en cualquier punto de España de forma rápida, cómoda y totalmente segura.</p>
+        </li>
+        <li>
+          <p class="feat-n" aria-hidden="true">03</p>
+          <img src="img/brand/f-financiacion.png" alt="" width="48" height="48">
+          <h3>Financiación fácil</h3>
+          <p>Opciones de financiación flexibles y un proceso sencillo para que estrenes coche sin complicaciones.</p>
+        </li>
+        <li>
+          <p class="feat-n" aria-hidden="true">04</p>
+          <img src="img/brand/f-revisados.png" alt="" width="48" height="48">
+          <h3>Vehículos revisados</h3>
+          <p>Todos nuestros vehículos pasan una revisión completa para garantizar seguridad, fiabilidad y tranquilidad.</p>
+        </li>
+      </ol>
+
+      <ul class="stats" role="list">
+        <li><span class="stat-n" data-count="36" aria-hidden="true">0</span><span class="sr-only">36</span><span class="stat-l">coches en stock</span></li>
+        <li><span class="stat-n" data-count="4,7" aria-hidden="true">0</span><span class="sr-only">4,7</span><span class="stat-l">valoración en Google</span></li>
+        <li><span class="stat-n" data-count="100" data-suffix="%" aria-hidden="true">0</span><span class="sr-only">100%</span><span class="stat-l">vehículos revisados</span></li>
+        <li><span class="stat-n" data-count="52" aria-hidden="true">0</span><span class="sr-only">52</span><span class="stat-l">provincias con entrega</span></li>
       </ul>
     </div>
   </section>
@@ -206,7 +267,7 @@
   <section class="sec sec-split" id="vender" aria-labelledby="t-vender">
     <div class="wrap split">
       <div class="split-txt">
-        <p class="eyebrow">Tasación sin compromiso</p>
+        <p class="eyebrow"><span class="num-tag">04</span> Tasación sin compromiso</p>
         <h2 id="t-vender">¿Quieres vender tu coche?</h2>
         <p>Valoramos tu vehículo de forma profesional y sin compromiso. Recibirás una oferta justa basada en el estado del vehículo y el mercado actual.</p>
         <p class="split-cta">
@@ -226,7 +287,7 @@
         <img src="img/brand/finance.png" alt="Cliente firmando la financiación de su vehículo" width="900" height="600" loading="lazy">
       </div>
       <div class="split-txt">
-        <p class="eyebrow">Financiación</p>
+        <p class="eyebrow"><span class="num-tag">05</span> Financiación</p>
         <h2 id="t-fin">Estrena coche sin complicaciones</h2>
         <p>Te ayudamos a encontrar la financiación que mejor se adapte a tus necesidades para que puedas disfrutar de tu nuevo vehículo con cuotas cómodas y un proceso rápido y transparente.</p>
         <p class="split-cta">
@@ -240,7 +301,7 @@
   <section class="sec sec-rev" id="resenas" aria-labelledby="t-rev">
     <div class="wrap">
       <div class="sec-head">
-        <p class="eyebrow">Reseñas de Google</p>
+        <p class="eyebrow"><span class="num-tag">06</span> Reseñas de Google</p>
         <h2 id="t-rev">Tu confianza, nuestra mejor reseña</h2>
         <p class="rating"><strong>4,7</strong><span class="stars" aria-hidden="true">★★★★★</span> <span class="rating-txt">de valoración media en Google</span></p>
       </div>
@@ -279,7 +340,7 @@
   <section class="sec sec-faq" id="faq" aria-labelledby="t-faq">
     <div class="wrap faq-wrap">
       <div class="faq-side">
-        <p class="eyebrow">Preguntas frecuentes</p>
+        <p class="eyebrow"><span class="num-tag">07</span> Preguntas frecuentes</p>
         <h2 id="t-faq">¿Tienes alguna pregunta?</h2>
         <p class="lead">Encuentra respuestas a las preguntas más comunes. Y si te queda alguna duda, escríbenos.</p>
         <p><a class="btn" href="#contacto"><span>Contactar</span></a></p>
@@ -292,6 +353,19 @@
         <details><summary>¿Puedo solicitar información o asesoramiento sin compromiso?</summary><p>Claro. Nuestro equipo está disponible para resolver cualquier duda y asesorarte sin ningún tipo de compromiso.</p></details>
         <details><summary>¿Realizáis envíos de vehículos a cualquier punto de España?</summary><p>Sí. Realizamos entregas a cualquier provincia con transporte seguro y totalmente garantizado.</p></details>
       </div>
+    </div>
+  </section>
+
+  <!-- ============ CIERRE ============ -->
+  <section class="closer" id="hablamos" aria-labelledby="t-closer">
+    <div class="closer-media" aria-hidden="true"><img src="img/brand/why.png" alt="" width="1600" height="900" loading="lazy"></div>
+    <div class="wrap closer-in">
+      <h2 id="t-closer">¿Hablamos de<br>tu próximo coche?</h2>
+      <p>Cuéntanos qué buscas y te decimos en minutos qué tenemos para ti. Sin compromiso, sin prisa y sin letra pequeña.</p>
+      <p class="closer-cta">
+        <a class="btn btn-light" href="https://wa.me/34641516102?text=Hola%2C%20quisiera%20obtener%20m%C3%A1s%20informaci%C3%B3n" target="_blank" rel="noopener"><span>Escribir por WhatsApp</span></a>
+        <a class="btn btn-outline" href="tel:+34641516102"><span>641 51 61 02</span></a>
+      </p>
     </div>
   </section>
 

@@ -27,10 +27,13 @@
 
     // El nombre accesible describe la acción siguiente; sin aria-pressed,
     // que sonaría contradictorio junto al cambio de etiqueta.
+    var root = document.documentElement;
+
     function paint() {
       var playing = !v.paused;
+      root.classList.toggle('motion-off', !playing);
       t.dataset.state = playing ? 'playing' : 'paused';
-      label.textContent = playing ? 'Pausar vídeo de fondo' : 'Reproducir vídeo de fondo';
+      label.textContent = playing ? 'Pausar el movimiento' : 'Reproducir el movimiento';
     }
     function play()  { var p = v.play(); if (p && p.catch) p.catch(function () { paint(); }); }
 
@@ -189,6 +192,7 @@
           '</ul>' +
           '<button type="button" class="card-open" data-id="' + c.id + '" ' +
             'aria-label="Ver ficha de ' + name + ' ' + c.version + ', ' + euro(c.price) + '">Ver ficha</button>' +
+          '<span class="card-go" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M4 12 12 4M12 4H5.5M12 4v6.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>' +
         '</div>' +
       '</article></li>';
   }
@@ -428,6 +432,181 @@
         if (r.top < window.innerHeight) n.classList.add('is-in');
       });
     }, 1200);
+  })();
+
+  /* ---------------------------------------------------------
+     5c. Barra de progreso de lectura
+     --------------------------------------------------------- */
+  (function progress() {
+    var bar = el('progress-bar');
+    if (!bar) return;
+    var ticking = false;
+    function draw() {
+      var h = document.documentElement.scrollHeight - window.innerHeight;
+      bar.style.width = (h > 0 ? Math.min(100, (window.scrollY / h) * 100) : 0) + '%';
+      ticking = false;
+    }
+    window.addEventListener('scroll', function () {
+      if (!ticking) { ticking = true; requestAnimationFrame(draw); }
+    }, { passive: true });
+    draw();
+  })();
+
+  /* ---------------------------------------------------------
+     5d. Destacados: carrusel gobernado por el scroll vertical
+     Con movimiento reducido o en móvil se queda como raíl normal.
+     --------------------------------------------------------- */
+  (function reel() {
+    var sec = document.getElementById('destacados');
+    var track = el('reel-track');
+    if (!sec || !track || !CARS.length) return;
+
+    var PICK = ['bmw-x7', 'porsche-boxster', 'audi-tts', 'mercedes-benz-clase-e',
+                'audi-a7', 'land-rover-range-rover-velar', 'bmw-serie-2', 'mini-countryman'];
+    var list = PICK.map(function (id) {
+      return CARS.filter(function (c) { return c.id === id; })[0];
+    }).filter(Boolean);
+
+    track.innerHTML = list.map(function (c) {
+      var name = c.brand + ' ' + c.model;
+      return '' +
+        '<li class="reel-card">' +
+          '<img src="img/cars-lg/' + c.imgs[0] + '" alt="" width="1400" height="1050" loading="lazy" decoding="async">' +
+          '<span class="reel-go" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M4 12 12 4M12 4H5.5M12 4v6.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>' +
+          '<div class="reel-body">' +
+            '<p class="reel-brand">' + c.brand + ' &middot; ' + c.year + '</p>' +
+            '<h3 class="reel-name">' + c.model + '</h3>' +
+            '<p class="reel-ver">' + c.version + '</p>' +
+            '<p class="reel-price">' + euro(c.price) + '<small>al contado</small></p>' +
+            '<ul class="reel-specs"><li>' + km(c.km) + '</li><li>' + c.gear + '</li><li>' + c.fuel + '</li></ul>' +
+          '</div>' +
+          '<button type="button" class="reel-open card-open" data-id="' + c.id + '" ' +
+            'aria-label="Ver ficha de ' + name + ' ' + c.version + ', ' + euro(c.price) + '">Ver ficha</button>' +
+        '</li>';
+    }).join('');
+
+    var deskReel = window.matchMedia('(min-width: 821px) and (min-aspect-ratio: 11/10)');
+    var travel = 0, ticking = false;
+
+    function isCinema() { return deskReel.matches && !reduceMQ.matches; }
+
+    var hint = sec.querySelector('.reel-hint');
+
+    function measure() {
+      if (hint) hint.textContent = isCinema() ? 'Desplázate para recorrerlos' : 'Desliza para verlos';
+      if (!isCinema()) {
+        sec.classList.add('is-static');
+        sec.style.height = '';
+        track.style.transform = '';
+        return;
+      }
+      sec.classList.remove('is-static');
+      travel = Math.max(0, track.scrollWidth - window.innerWidth + 40);
+      // altura de la sección = una pantalla + lo que hay que recorrer en horizontal
+      sec.style.height = (window.innerHeight + travel) + 'px';
+      draw();
+    }
+
+    function draw() {
+      if (!isCinema()) return;
+      var r = sec.getBoundingClientRect();
+      var p = Math.min(1, Math.max(0, -r.top / (sec.offsetHeight - window.innerHeight || 1)));
+      track.style.transform = 'translate3d(' + (-p * travel) + 'px,0,0)';
+      ticking = false;
+    }
+
+    window.addEventListener('scroll', function () {
+      if (!ticking) { ticking = true; requestAnimationFrame(draw); }
+    }, { passive: true });
+    window.addEventListener('resize', measure);
+    deskReel.addEventListener('change', measure);
+    reduceMQ.addEventListener('change', measure);
+
+    // teclado: si el foco cae en una tarjeta que está fuera de pantalla,
+    // llevamos la página al punto donde esa tarjeta se ve.
+    track.addEventListener('focusin', function (e) {
+      var card = e.target.closest('.reel-card');
+      if (!card) return;
+      if (!isCinema()) { card.scrollIntoView({ block: 'nearest', inline: 'center' }); return; }
+      var idx = Array.prototype.indexOf.call(track.children, card);
+      var per = travel / Math.max(1, track.children.length - 1);
+      var top = sec.offsetTop + idx * per;
+      window.scrollTo({ top: top, behavior: reduceMQ.matches ? 'auto' : 'smooth' });
+    });
+
+    if (document.readyState === 'complete') measure();
+    else window.addEventListener('load', measure);
+    measure();
+  })();
+
+  /* ---------------------------------------------------------
+     5e. Cifras que cuentan al entrar en pantalla
+     El valor final está en el DOM (.sr-only) desde el principio.
+     --------------------------------------------------------- */
+  (function counters() {
+    var nums = document.querySelectorAll('.stat-n');
+    if (!nums.length) return;
+    if (reduceMQ.matches || !('IntersectionObserver' in window)) {
+      Array.prototype.forEach.call(nums, function (n) {
+        n.textContent = n.dataset.count + (n.dataset.suffix || '');
+      });
+      return;
+    }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        io.unobserve(e.target);
+        var node = e.target;
+        var raw = node.dataset.count;
+        var suffix = node.dataset.suffix || '';
+        var decimal = raw.indexOf(',') > -1;
+        var end = parseFloat(raw.replace(',', '.'));
+        var t0 = performance.now();
+        (function step(now) {
+          var p = Math.min(1, (now - t0) / 1100);
+          var eased = 1 - Math.pow(1 - p, 3);
+          var val = end * eased;
+          node.textContent = (decimal ? val.toFixed(1).replace('.', ',') : Math.round(val)) + suffix;
+          if (p < 1) requestAnimationFrame(step);
+          else node.textContent = raw + suffix;
+        })(t0);
+      });
+    }, { threshold: 0.4 });
+    Array.prototype.forEach.call(nums, function (n) { io.observe(n); });
+  })();
+
+  /* ---------------------------------------------------------
+     5f. Paralaje del cierre
+     --------------------------------------------------------- */
+  (function closer() {
+    var media = document.querySelector('.closer-media img');
+    var sec = document.querySelector('.closer');
+    var heroMedia = document.querySelector('.stage-media');
+    var stage = document.querySelector('.stage');
+    if (reduceMQ.matches) return;
+    var ticking = false;
+    function draw() {
+      if (media && sec) {
+        var r = sec.getBoundingClientRect();
+        if (r.bottom > 0 && r.top < window.innerHeight) {
+          var p = (window.innerHeight - r.top) / (window.innerHeight + r.height);
+          media.style.transform = 'translate3d(0,' + ((p - .5) * 9).toFixed(2) + '%,0)';
+        }
+      }
+      // el hero se hunde un poco mientras el contenido sube por encima
+      if (heroMedia && stage) {
+        var h = stage.offsetHeight;
+        var y = Math.min(window.scrollY, h);
+        if (y <= h) {
+          heroMedia.style.transform = 'translate3d(0,' + (y * .18).toFixed(1) + 'px,0) scale(' + (1 + y / h * .05).toFixed(4) + ')';
+        }
+      }
+      ticking = false;
+    }
+    window.addEventListener('scroll', function () {
+      if (!ticking) { ticking = true; requestAnimationFrame(draw); }
+    }, { passive: true });
+    draw();
   })();
 
   /* ---------------------------------------------------------
