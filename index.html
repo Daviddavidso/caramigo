@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="es" class="anim">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Coches de ocasión revisados en València | CarAmigo</title>
+<meta name="description" content="Vehículos de ocasión y seminuevos revisados uno a uno en València. Precios competitivos, financiación hasta el 100% y entrega en cualquier punto de España.">
+<meta name="theme-color" content="#0b1b26">
+<link rel="icon" href="img/brand/favicon.png">
+<meta property="og:title" content="CarAmigo — Coches de ocasión revisados en València">
+<meta property="og:description" content="36 vehículos revisados, con historial verificado y entrega en toda España.">
+<meta property="og:image" content="img/brand/logo.png">
+<link rel="preload" as="style" href="fonts/fonts.css">
+<link rel="stylesheet" href="fonts/fonts.css">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<a class="skip" href="#contenido">Saltar al contenido principal</a>
+
+<!-- ============ HERO ============ -->
+<div class="stage">
+  <!-- Decoración. Sin atributo autoplay: lo arranca el JS, de modo que el botón
+       de pausa y el movimiento aparecen o faltan siempre juntos (SC 2.2.2). -->
+  <div class="stage-media" aria-hidden="true">
+    <video class="stage-video" muted loop playsinline preload="metadata"
+           poster="img/brand/hero-poster.jpg" src="video/hero.mp4"
+           disablepictureinpicture tabindex="-1"></video>
+  </div>
+  <div class="stage-veil" aria-hidden="true"></div>
+
+  <div class="frame">
+    <header class="hdr">
+      <a class="brand" href="#" aria-label="CarAmigo, inicio">
+        <svg class="mark" viewBox="0 0 25 25" aria-hidden="true">
+          <path d="M12.5 0 A12.5 12.5 0 0 0 12.5 25 A4 12.5 0 0 0 12.5 0 Z" fill="#fff"/>
+          <path d="M12.5 0 A12.5 12.5 0 0 1 12.5 25 A8.2 12.5 0 0 0 12.5 0 Z" fill="#fff" fill-opacity="0.47"/>
+        </svg>
+        <span class="brand-name"><b>car</b>amigo<i>.es</i></span>
+      </a>
+
+      <nav class="nav" aria-label="Principal">
+        <a href="#vehiculos">Vehículos</a>
+        <a href="#financiacion">Financiación</a>
+        <a href="#vender">Vender</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+
+      <a class="btn btn-nav" href="https://wa.me/34641516102?text=Hola%2C%20quisiera%20obtener%20m%C3%A1s%20informaci%C3%B3n"
+         target="_blank" rel="noopener"><span>Hablar por WhatsApp</span></a>
+
+      <button class="burger" id="menu-toggle" type="button" aria-expanded="false" aria-controls="site-menu">
+        <span class="sr-only">Abrir menú</span>
+        <i aria-hidden="true"></i><i aria-hidden="true"></i>
+      </button>
+    </header>
+
+    <div class="hero">
+      <h1>
+        <span class="ln"><span class="lni">El coche que buscas,</span></span>
+        <br>
+        <span class="ln"><span class="lni">con la confianza que mereces.</span></span>
+      </h1>
+      <p class="sub">Vehículos de ocasión revisados uno a uno en València. <br>Tú eliges el coche, nosotros nos ocupamos de todo lo demás.</p>
+      <a class="btn btn-hero" href="#vehiculos"><span>Ver los 36 coches</span></a>
+      <p class="note">Entrega en toda España &middot; Financiación hasta el 100%</p>
+    </div>
+
+    <ul class="logos" role="list">
+      <li class="logo l1">
+        <svg class="pl" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 5.9 6.5.95-4.7 4.6 1.1 6.5L12 17.4l-5.8 3.05 1.1-6.5-4.7-4.6 6.5-.95z" fill="#fff"/></svg>
+        <span class="wm">4,7</span><span class="wm-sub">en Google</span>
+      </li>
+      <li class="logo l2">
+        <svg class="pl" viewBox="0 0 24 24" aria-hidden="true"><rect x="1.6" y="6.4" width="20.8" height="11.2" rx="1.6" fill="none" stroke="#fff" stroke-width="1.9"/><path d="M5.4 6.4V4.2h13.2v2.2" fill="none" stroke="#fff" stroke-width="1.9"/></svg>
+        <span class="wm">36</span><span class="wm-sub">coches en stock</span>
+      </li>
+      <li class="logo l3">
+        <svg class="pl" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 15.2h1.6a2.2 2.2 0 0 0 4.4 0h6.6a2.2 2.2 0 0 0 4.4 0H22V10l-3.2-3.4h-3.4V4.6H2z" fill="none" stroke="#fff" stroke-width="1.8" stroke-linejoin="round"/></svg>
+        <span class="wm">España</span><span class="wm-sub">entrega a domicilio</span>
+      </li>
+      <li class="logo l4">
+        <svg class="pl" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.4l8.4 3.4v5.5c0 4.7-3.4 8.6-8.4 10.3-5-1.7-8.4-5.6-8.4-10.3V5.8z" fill="none" stroke="#fff" stroke-width="1.8" stroke-linejoin="round"/><path d="M8.3 11.9l2.6 2.6 4.8-5" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span class="wm">100%</span><span class="wm-sub">revisados</span>
+      </li>
+    </ul>
+
+    <button class="vid-toggle" id="vid-toggle" type="button" data-state="playing">
+      <svg viewBox="0 0 16 16" aria-hidden="true" class="ic-pause"><rect x="4" y="3" width="3" height="10" fill="currentColor"/><rect x="9" y="3" width="3" height="10" fill="currentColor"/></svg>
+      <svg viewBox="0 0 16 16" aria-hidden="true" class="ic-play"><path d="M5 3l8 5-8 5z" fill="currentColor"/></svg>
+      <span class="vid-label">Pausar vídeo de fondo</span>
+    </button>
+
+    <a class="scroll-cue" href="#vehiculos">
+      <span>Ver coches</span>
+      <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 2v12M3 9.5l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+  </div>
+</div>
+
+<!-- mobile menu -->
+<div class="menu" id="site-menu" hidden>
+  <button class="menu-x" id="menu-close" type="button">
+    <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 4l12 12M16 4L4 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+    <span class="sr-only">Cerrar menú</span>
+  </button>
+  <nav class="menu-list" aria-label="Menú móvil">
+    <a href="#vehiculos">Vehículos<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M12 4H5.5M12 4v6.5" fill="none" stroke="#fff" stroke-width="1.6"/></svg></a>
+    <a href="#financiacion">Financiación<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M12 4H5.5M12 4v6.5" fill="none" stroke="#fff" stroke-width="1.6"/></svg></a>
+    <a href="#vender">Vender<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M12 4H5.5M12 4v6.5" fill="none" stroke="#fff" stroke-width="1.6"/></svg></a>
+    <a href="#contacto">Contacto<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M12 4H5.5M12 4v6.5" fill="none" stroke="#fff" stroke-width="1.6"/></svg></a>
+  </nav>
+  <div class="menu-foot">
+    <a class="btn menu-cta" href="https://wa.me/34641516102?text=Hola%2C%20quisiera%20obtener%20m%C3%A1s%20informaci%C3%B3n" target="_blank" rel="noopener"><span>Hablar por WhatsApp</span></a>
+    <p class="menu-note">Entrega en toda España &middot; Financiación hasta el 100%</p>
+  </div>
+</div>
+
+<main id="contenido">
+
+  <!-- ============ CATÁLOGO ============ -->
+  <section class="sec sec-stock" id="vehiculos" aria-labelledby="t-stock">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Stock actual</p>
+        <h2 id="t-stock">Coches disponibles</h2>
+        <p class="lead">Cada vehículo pasa una revisión completa antes de entrar en stock. Historial verificado, precio cerrado y entrega en cualquier punto de España.</p>
+      </div>
+
+      <form class="filters" id="filters" aria-labelledby="t-filtros">
+        <h3 class="sr-only" id="t-filtros">Filtrar vehículos</h3>
+
+        <p class="f-field f-search">
+          <label for="f-q">Buscar</label>
+          <input type="search" id="f-q" name="q" placeholder="BMW, híbrido, familiar…" autocomplete="off">
+        </p>
+        <p class="f-field">
+          <label for="f-brand">Marca</label>
+          <select id="f-brand" name="brand"><option value="">Todas</option></select>
+        </p>
+        <p class="f-field">
+          <label for="f-fuel">Combustible</label>
+          <select id="f-fuel" name="fuel"><option value="">Todos</option></select>
+        </p>
+        <p class="f-field">
+          <label for="f-gear">Cambio</label>
+          <select id="f-gear" name="gear"><option value="">Todos</option><option>Automático</option><option>Manual</option></select>
+        </p>
+        <p class="f-field">
+          <label for="f-max">Precio máximo</label>
+          <select id="f-max" name="max">
+            <option value="">Sin límite</option>
+            <option value="10000">Hasta 10.000 €</option>
+            <option value="15000">Hasta 15.000 €</option>
+            <option value="20000">Hasta 20.000 €</option>
+            <option value="30000">Hasta 30.000 €</option>
+            <option value="50000">Hasta 50.000 €</option>
+          </select>
+        </p>
+        <p class="f-field">
+          <label for="f-sort">Ordenar por</label>
+          <select id="f-sort" name="sort">
+            <option value="rec">Recomendados</option>
+            <option value="p-asc">Precio: de menor a mayor</option>
+            <option value="p-desc">Precio: de mayor a menor</option>
+            <option value="km">Kilómetros</option>
+            <option value="year">Año</option>
+          </select>
+        </p>
+        <p class="f-actions">
+          <button type="button" class="btn-ghost" id="f-reset">Limpiar filtros</button>
+        </p>
+      </form>
+
+      <p class="results" id="results" role="status">36 coches disponibles</p>
+
+      <ul class="grid" id="grid" role="list"></ul>
+
+      <p class="more-wrap"><button type="button" class="btn btn-more" id="more"><span>Ver más coches</span></button></p>
+
+      <p class="empty" id="empty" hidden>No hay coches con esos filtros. <button type="button" class="btn-ghost" id="empty-reset">Ver todo el stock</button></p>
+    </div>
+  </section>
+
+  <!-- ============ POR QUÉ ============ -->
+  <section class="sec sec-why" id="por-que" aria-labelledby="t-why">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Por qué CarAmigo</p>
+        <h2 id="t-why">Todo lo que necesitas en un solo lugar</h2>
+        <p class="lead">Seleccionamos cuidadosamente cada vehículo para ofrecer coches revisados, con historial transparente y listos para disfrutar desde el primer día.</p>
+      </div>
+      <ul class="feats" role="list">
+        <li><img src="img/brand/f-precio.png" alt="" width="48" height="48"><h3>Precios competitivos</h3><p>Vehículos de calidad con precios ajustados al mercado para ofrecerte la mejor relación calidad-precio.</p></li>
+        <li><img src="img/brand/f-entrega.png" alt="" width="48" height="48"><h3>Entrega a domicilio</h3><p>Recibe tu nuevo coche en cualquier punto de España de forma rápida, cómoda y totalmente segura.</p></li>
+        <li><img src="img/brand/f-financiacion.png" alt="" width="48" height="48"><h3>Financiación fácil</h3><p>Opciones de financiación flexibles y un proceso sencillo para que estrenes coche sin complicaciones.</p></li>
+        <li><img src="img/brand/f-revisados.png" alt="" width="48" height="48"><h3>Vehículos revisados</h3><p>Todos nuestros vehículos pasan una revisión completa para garantizar seguridad, fiabilidad y tranquilidad.</p></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ VENDER ============ -->
+  <section class="sec sec-split" id="vender" aria-labelledby="t-vender">
+    <div class="wrap split">
+      <div class="split-txt">
+        <p class="eyebrow">Tasación sin compromiso</p>
+        <h2 id="t-vender">¿Quieres vender tu coche?</h2>
+        <p>Valoramos tu vehículo de forma profesional y sin compromiso. Recibirás una oferta justa basada en el estado del vehículo y el mercado actual.</p>
+        <p class="split-cta">
+          <a class="btn" href="https://wa.me/34641516102?text=Hola%2C%20quiero%20tasar%20mi%20coche" target="_blank" rel="noopener"><span>Tasar mi coche</span></a>
+        </p>
+      </div>
+      <div class="split-img">
+        <img src="img/brand/sell.png" alt="Coche entregado a un cliente de CarAmigo" width="900" height="600" loading="lazy">
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FINANCIACIÓN ============ -->
+  <section class="sec sec-split alt" id="financiacion" aria-labelledby="t-fin">
+    <div class="wrap split">
+      <div class="split-img">
+        <img src="img/brand/finance.png" alt="Cliente firmando la financiación de su vehículo" width="900" height="600" loading="lazy">
+      </div>
+      <div class="split-txt">
+        <p class="eyebrow">Financiación</p>
+        <h2 id="t-fin">Estrena coche sin complicaciones</h2>
+        <p>Te ayudamos a encontrar la financiación que mejor se adapte a tus necesidades para que puedas disfrutar de tu nuevo vehículo con cuotas cómodas y un proceso rápido y transparente.</p>
+        <p class="split-cta">
+          <a class="btn" href="https://wa.me/34641516102?text=Hola%2C%20quiero%20solicitar%20financiaci%C3%B3n" target="_blank" rel="noopener"><span>Solicitar financiación</span></a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ RESEÑAS ============ -->
+  <section class="sec sec-rev" id="resenas" aria-labelledby="t-rev">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Reseñas de Google</p>
+        <h2 id="t-rev">Tu confianza, nuestra mejor reseña</h2>
+        <p class="rating"><strong>4,7</strong><span class="stars" aria-hidden="true">★★★★★</span> <span class="rating-txt">de valoración media en Google</span></p>
+      </div>
+      <ul class="revs" role="list">
+        <li>
+          <img src="img/brand/rev-1.jpg" alt="" width="44" height="44" loading="lazy">
+          <div><p class="rev-name">Maria Tsyrulnykova <span class="rev-stars" aria-label="5 de 5 estrellas">★★★★★</span></p>
+          <p>Hace poco compré un coche ahí la verdad estoy muy contenta han pasado tres meses no he tenido ningún fallo y recomiendo el servicio 100 × 100. Se nota que a los chicos les gusta su trabajo y te asesoraran súper súper bien. Volveré sin ninguna duda y se lo recomiendo a todos mis amigos.</p></div>
+        </li>
+        <li>
+          <img src="img/brand/rev-2.jpg" alt="" width="44" height="44" loading="lazy">
+          <div><p class="rev-name">Liliya Zgurskaya <span class="rev-stars" aria-label="5 de 5 estrellas">★★★★★</span></p>
+          <p>Compré un coche con ellos hace un par de semanas y estoy muy satisfecha con la experiencia. El coche funciona perfectamente. Los vendedores son personas educadas, amables y siempre están disponibles para ayudarte cuando lo necesitas. Si quieres comprar un coche de forma rápida y sin complicaciones, los recomiendo totalmente. ¡Muchas gracias por el excelente servicio!</p></div>
+        </li>
+        <li>
+          <img src="img/brand/rev-3.jpg" alt="" width="44" height="44" loading="lazy">
+          <div><p class="rev-name">Wilfredo Luis Perez Garcia <span class="rev-stars" aria-label="5 de 5 estrellas">★★★★★</span></p>
+          <p>He comprado coche con ellos muy buena atención recomiendo a su vendedor estrella Román muy buen chico con muy buena atención en general muy buen equipo de trabajo el coche de 10/10 y muy buena presentación y servicios FELICIDADES y gracias por todo CARAMIGO</p></div>
+        </li>
+        <li>
+          <img src="img/brand/rev-4.jpg" alt="" width="44" height="44" loading="lazy">
+          <div><p class="rev-name">Ekaterina Gromova <span class="rev-stars" aria-label="5 de 5 estrellas">★★★★★</span></p>
+          <p>Una experiencia de 10. El equipo fue muy amable y atento en todo momento. Me hicieron sentir cómoda y me explicaron todo de forma clara. Se nota que trabajan con seriedad y ganas de ayudar. Sin duda los recomendaría a cualquiera que busque un servicio de confianza. ¡Muchas gracias!</p></div>
+        </li>
+        <li>
+          <img src="img/brand/rev-5.jpg" alt="" width="44" height="44" loading="lazy">
+          <div><p class="rev-name">Vadym Shevtsov <span class="rev-stars" aria-label="5 de 5 estrellas">★★★★★</span></p>
+          <p>¡Muchas gracias por su profesionalidad! Es la primera vez que les compramos un coche y todo ha sido súper rápido y cómodo. ¡Totalmente recomendados!</p></div>
+        </li>
+      </ul>
+      <p class="revs-link"><a href="https://maps.google.com/?cid=10997877635703373647" target="_blank" rel="noopener">Leer todas las reseñas en Google Maps</a></p>
+    </div>
+  </section>
+
+  <!-- ============ FAQ ============ -->
+  <section class="sec sec-faq" id="faq" aria-labelledby="t-faq">
+    <div class="wrap faq-wrap">
+      <div class="faq-side">
+        <p class="eyebrow">Preguntas frecuentes</p>
+        <h2 id="t-faq">¿Tienes alguna pregunta?</h2>
+        <p class="lead">Encuentra respuestas a las preguntas más comunes. Y si te queda alguna duda, escríbenos.</p>
+        <p><a class="btn" href="#contacto"><span>Contactar</span></a></p>
+      </div>
+      <div class="faq-list">
+        <details><summary>¿Qué tipo de vehículos ofrecéis en vuestro concesionario?</summary><p>Ofrecemos una amplia selección de vehículos de ocasión, seminuevos e importación, todos revisados y listos para entrega inmediata. Trabajamos con las principales marcas del mercado.</p></details>
+        <details><summary>¿Actualizáis el stock de coches con frecuencia?</summary><p>Sí. Renovamos el stock de forma continua para garantizar vehículos actualizados, con historiales verificados y precios competitivos.</p></details>
+        <details><summary>¿Puedo reservar un coche online antes de verlo en persona?</summary><p>Por supuesto. Puedes reservar cualquier vehículo de manera rápida y segura para asegurar su disponibilidad hasta que lo visites.</p></details>
+        <details><summary>¿Ofrecéis financiación para cualquier vehículo?</summary><p>Sí. Disponemos de financiación adaptada a todos los vehículos y perfiles, con opciones flexibles y trámites rápidos.</p></details>
+        <details><summary>¿Puedo solicitar información o asesoramiento sin compromiso?</summary><p>Claro. Nuestro equipo está disponible para resolver cualquier duda y asesorarte sin ningún tipo de compromiso.</p></details>
+        <details><summary>¿Realizáis envíos de vehículos a cualquier punto de España?</summary><p>Sí. Realizamos entregas a cualquier provincia con transporte seguro y totalmente garantizado.</p></details>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============ FOOTER / CONTACTO ============ -->
+<footer class="foot" id="contacto">
+  <div class="wrap foot-grid">
+    <div class="foot-brand">
+      <p class="foot-logo"><span class="brand-name big"><b>car</b>amigo<i>.es</i></span></p>
+      <p class="foot-claim">Creemos que comprar un coche debe ser una experiencia sencilla y sin complicaciones. En CarAmigo, tu tranquilidad es nuestra prioridad.</p>
+    </div>
+
+    <div class="foot-col">
+      <h2>Dónde estamos</h2>
+      <address>
+        Carrer Solidaritat, 41<br>
+        46960 Aldaia, Valencia<br>España
+      </address>
+      <p><a href="https://maps.google.com/?cid=10997877635703373647" target="_blank" rel="noopener">Cómo llegar</a></p>
+    </div>
+
+    <div class="foot-col">
+      <h2>Horario</h2>
+      <p>Lunes a viernes<br>10:00 – 13:00 &middot; 15:00 – 19:00</p>
+      <p>Sábados<br>10:00 – 15:00</p>
+      <p class="foot-small">Atendemos con cita previa.</p>
+    </div>
+
+    <div class="foot-col">
+      <h2>Contacto</h2>
+      <p><a href="tel:+34641516102">641 51 61 02</a></p>
+      <p><a href="https://wa.me/34641516102?text=Hola%2C%20quisiera%20obtener%20m%C3%A1s%20informaci%C3%B3n" target="_blank" rel="noopener">Escribir por WhatsApp</a></p>
+      <p class="foot-social">
+        <a href="https://www.instagram.com/caramigo.es/" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.tiktok.com/@caramigo.es" target="_blank" rel="noopener">TikTok</a>
+      </p>
+    </div>
+  </div>
+
+  <div class="wrap foot-legal">
+    <p>&copy; <span id="year">2026</span> CarAmigo</p>
+    <nav aria-label="Enlaces legales">
+      <a href="https://www.caramigo.es/cookies" target="_blank" rel="noopener">Política de cookies</a>
+      <a href="https://www.caramigo.es/privacy-policy" target="_blank" rel="noopener">Política de privacidad</a>
+      <a href="https://www.caramigo.es/terms-and-conditions" target="_blank" rel="noopener">Términos y condiciones</a>
+      <a href="https://www.caramigo.es/legal-advice" target="_blank" rel="noopener">Aviso legal</a>
+    </nav>
+  </div>
+</footer>
+
+<a class="wa" href="https://wa.me/34641516102?text=Hola%2C%20quisiera%20obtener%20m%C3%A1s%20informaci%C3%B3n" target="_blank" rel="noopener">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12.04 2C6.6 2 2.2 6.4 2.2 11.84c0 1.94.52 3.75 1.42 5.31L2 22l4.98-1.58a9.8 9.8 0 0 0 5.06 1.4h.01c5.43 0 9.84-4.4 9.84-9.84 0-2.63-1.02-5.1-2.88-6.96A9.77 9.77 0 0 0 12.04 2m0 1.8c2.15 0 4.17.84 5.69 2.36a7.99 7.99 0 0 1 2.36 5.69c0 4.44-3.61 8.05-8.06 8.05a8.1 8.1 0 0 1-4.12-1.13l-.29-.18-3.06.97.98-2.99-.19-.31a8 8 0 0 1-1.22-4.28c0-4.44 3.61-8.05 8.05-8.05m-2.9 4.02c-.19 0-.5.07-.76.35-.26.28-1 .98-1 2.4 0 1.41 1.03 2.78 1.17 2.97.14.19 2 3.05 4.85 4.16 2.37.92 2.85.74 3.36.69.51-.05 1.66-.68 1.9-1.33.23-.66.23-1.22.16-1.33-.07-.12-.26-.19-.54-.33-.28-.14-1.66-.82-1.92-.91-.26-.1-.45-.14-.63.14-.19.28-.72.91-.89 1.1-.16.19-.33.21-.61.07-.28-.14-1.18-.44-2.25-1.39-.83-.74-1.39-1.66-1.56-1.94-.16-.28-.02-.43.13-.57.13-.13.28-.33.42-.5.14-.16.19-.28.28-.47.09-.19.05-.35-.02-.49-.07-.14-.62-1.53-.87-2.09-.21-.48-.43-.5-.63-.51z"/></svg>
+  <span class="sr-only">Escribir a CarAmigo por WhatsApp</span>
+</a>
+
+<!-- ============ FICHA (modal) ============ -->
+<div class="ficha" id="ficha" hidden>
+  <div class="ficha-back" data-close></div>
+  <div class="ficha-box" role="dialog" aria-modal="true" aria-labelledby="ficha-title" tabindex="-1">
+    <button class="ficha-x" type="button" data-close>
+      <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 3l10 10M13 3L3 13" stroke="currentColor" stroke-width="1.7" fill="none" stroke-linecap="round"/></svg>
+      <span class="sr-only">Cerrar ficha</span>
+    </button>
+    <div class="ficha-body" id="ficha-body"></div>
+  </div>
+</div>
+
+<script src="data-cars.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
