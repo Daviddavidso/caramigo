@@ -831,7 +831,7 @@ h3{ font-weight:500; letter-spacing:-.02em; color:var(--ink); }
    CAPA DE ARTE: grano, progreso, cifras monoespaciadas
    ============================================================ */
 .progress{
-  position:fixed; inset-block-start:0; inset-inline:0; z-index:150;
+  position:fixed; inset-block-start:0; inset-inline:0; z-index:60;
   height:3px; pointer-events:none;
 }
 .progress i{
@@ -840,11 +840,14 @@ h3{ font-weight:500; letter-spacing:-.02em; color:var(--ink); }
   transition:width .1s linear;
 }
 .grain{
-  position:fixed; inset:0; z-index:140; pointer-events:none;
-  opacity:.045; mix-blend-mode:soft-light;
+  position:fixed; inset:0; z-index:12; pointer-events:none;
+  opacity:.03; mix-blend-mode:soft-light;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
 }
-@media (prefers-contrast: more), (forced-colors: active){ .grain{ display:none; } }
+@media (prefers-contrast: more), (forced-colors: active), (prefers-reduced-transparency: reduce){
+  .grain{ display:none; }
+}
+@media print{ .grain, .progress{ display:none!important; } }
 
 .num-tag{
   font-family:"Geist Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
@@ -882,7 +885,11 @@ h3{ font-weight:500; letter-spacing:-.02em; color:var(--ink); }
 }
 @keyframes slide{ from{ transform:translateX(0) } to{ transform:translateX(-100%) } }
 .ticker:hover .ticker-row, .ticker:focus-within .ticker-row{ animation-play-state:paused; }
-@media (prefers-reduced-motion: reduce){ .ticker-row{ animation:none; } }
+@media (prefers-reduced-motion: reduce){
+  .ticker-row{ animation:none; flex-wrap:wrap; padding:0 1.25rem; }
+  .ticker-mask{ width:100%; mask-image:none; -webkit-mask-image:none; }
+  .ticker-row[aria-hidden="true"]{ display:none; }   /* la copia sin movimiento no aporta nada */
+}
 
 /* ============================================================
    DESTACADOS — carrusel gobernado por el scroll
@@ -891,8 +898,9 @@ h3{ font-weight:500; letter-spacing:-.02em; color:var(--ink); }
 .reel-sticky{
   position:sticky; top:0; height:100svh;
   display:flex; flex-direction:column; justify-content:center; gap:clamp(1.5rem,3vw,2.5rem);
-  overflow:hidden;
+  overflow:clip; overflow-clip-margin:14px;
 }
+@supports not (overflow: clip){ .reel-sticky{ overflow:hidden; } }
 .reel-head{ display:flex; flex-direction:column; align-items:flex-start; }
 .reel-head h2{ margin:0; }
 .reel-hint{
@@ -982,6 +990,17 @@ h3{ font-weight:500; letter-spacing:-.02em; color:var(--ink); }
   transform:none!important; scroll-padding-inline:1.25rem;
 }
 .reel.is-static .reel-card{ scroll-snap-align:center; }
+
+@media (prefers-reduced-motion: reduce){
+  .reel-track{
+    display:grid; grid-template-columns:repeat(auto-fill, minmax(min(17rem,100%), 1fr));
+    gap:1.25rem; overflow:visible; width:auto;
+    padding-inline:max(1.25rem, calc((100vw - 1240px) / 2));
+    transform:none!important;
+  }
+  .reel-card{ width:auto; aspect-ratio:4/3; }
+  .reel-hint{ display:none; }
+}
 
 /* ============================================================
    PROCESO + CIFRAS
@@ -1086,3 +1105,12 @@ h3{ font-weight:500; letter-spacing:-.02em; color:var(--ink); }
 .motion-off .reel-hint::after,
 .motion-off .scroll-cue svg{ animation-play-state:paused!important; }
 .motion-off .closer-media img{ transform:none!important; }
+
+.foot-motion{
+  display:inline-flex; align-items:center; min-height:44px;
+  padding:0 1.1rem; margin:0;
+  font-family:inherit; font-size:.875rem; color:#fff;
+  background:rgba(255,255,255,.10); border:1px solid rgba(255,255,255,.34);
+  border-radius:var(--r-pill); cursor:pointer;
+}
+.foot-motion:hover{ background:rgba(255,255,255,.20); }

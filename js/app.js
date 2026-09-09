@@ -28,18 +28,21 @@
     // El nombre accesible describe la acción siguiente; sin aria-pressed,
     // que sonaría contradictorio junto al cambio de etiqueta.
     var root = document.documentElement;
+    var foot = el('motion-toggle');
 
     function paint() {
       var playing = !v.paused;
       root.classList.toggle('motion-off', !playing);
       t.dataset.state = playing ? 'playing' : 'paused';
       label.textContent = playing ? 'Pausar el movimiento' : 'Reproducir el movimiento';
+      if (foot) foot.textContent = label.textContent;
     }
     function play()  { var p = v.play(); if (p && p.catch) p.catch(function () { paint(); }); }
 
     v.addEventListener('play', paint);
     v.addEventListener('pause', paint);
     t.addEventListener('click', function () { v.paused ? play() : v.pause(); paint(); });
+    if (foot) foot.addEventListener('click', function () { v.paused ? play() : v.pause(); paint(); });
     reduceMQ.addEventListener('change', function (e) { e.matches ? v.pause() : play(); paint(); });
 
     v.muted = true;
@@ -561,6 +564,7 @@
         var suffix = node.dataset.suffix || '';
         var decimal = raw.indexOf(',') > -1;
         var end = parseFloat(raw.replace(',', '.'));
+        node.textContent = '0' + suffix;
         var t0 = performance.now();
         (function step(now) {
           var p = Math.min(1, (now - t0) / 1100);
