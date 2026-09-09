@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Coches de ocasión revisados en València | CarAmigo</title>
 <meta name="description" content="Vehículos de ocasión y seminuevos revisados uno a uno en València. Precios competitivos, financiación hasta el 100% y entrega en cualquier punto de España.">
-<meta name="theme-color" content="#0b1b26">
+<meta name="theme-color" content="#f5f8f3">
 <link rel="icon" href="img/brand/favicon.png">
 <meta property="og:title" content="CarAmigo — Coches de ocasión revisados en València">
 <meta property="og:description" content="36 vehículos revisados, con historial verificado y entrega en toda España.">
@@ -23,9 +23,12 @@
   <!-- Decoración. Sin atributo autoplay: lo arranca el JS, de modo que el botón
        de pausa y el movimiento aparecen o faltan siempre juntos (SC 2.2.2). -->
   <div class="stage-media" aria-hidden="true">
-    <video class="stage-video" muted loop playsinline preload="metadata"
-           poster="img/brand/hero-poster.jpg" src="video/hero.mp4"
-           disablepictureinpicture tabindex="-1"></video>
+    <video class="stage-video" muted loop playsinline preload="auto"
+           poster="img/brand/hero-poster.jpg"
+           disablepictureinpicture disableremoteplayback tabindex="-1">
+      <source src="video/hero.webm" type="video/webm">
+      <source src="video/hero.mp4" type="video/mp4">
+    </video>
   </div>
   <div class="stage-veil" aria-hidden="true"></div>
 
@@ -62,7 +65,7 @@
         <span class="ln"><span class="lni">con la confianza que mereces.</span></span>
       </h1>
       <p class="sub">Vehículos de ocasión revisados uno a uno en València. <br>Tú eliges el coche, nosotros nos ocupamos de todo lo demás.</p>
-      <a class="btn btn-hero" href="#vehiculos"><span>Ver los 36 coches</span></a>
+      <a class="btn btn-light btn-hero" href="#vehiculos"><span>Ver los 36 coches</span></a>
       <p class="note">Entrega en toda España &middot; Financiación hasta el 100%</p>
     </div>
 

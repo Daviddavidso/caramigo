@@ -12,8 +12,8 @@
   // Formato español fijo (miles con punto). No dependemos de la configuración
   // regional del navegador: en algunos entornos devuelve "7861" en vez de "7.861".
   var miles = function (n) { return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, '.'); };
-  var euro  = function (n) { return miles(n) + ' €'; };
-  var km    = function (n) { return miles(n) + ' km'; };
+  var euro  = function (n) { return miles(n) + '\u00a0€'; };
+  var km    = function (n) { return miles(n) + '\u00a0km'; };
   var el   = function (id) { return document.getElementById(id); };
 
   /* ---------------------------------------------------------
@@ -399,6 +399,35 @@
         e.preventDefault(); first.focus();
       }
     });
+  })();
+
+  /* ---------------------------------------------------------
+     5b. Entrada de las secciones al hacer scroll
+     El estado visible es el de base en CSS: si esto no corre, se ve todo.
+     --------------------------------------------------------- */
+  (function reveal() {
+    if (reduceMQ.matches || !('IntersectionObserver' in window)) return;
+    document.documentElement.classList.add('js');
+    var targets = document.querySelectorAll('.sec-head, .filters, .feats li, .split-txt, .split-img, .revs li, .faq-side, .faq-list, .foot-grid');
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        e.target.classList.add('is-in');
+        io.unobserve(e.target);
+      });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.06 });
+    Array.prototype.forEach.call(targets, function (t, i) {
+      t.classList.add('reveal');
+      t.style.transitionDelay = Math.min(i % 4, 3) * 70 + 'ms';
+      io.observe(t);
+    });
+    // nada puede quedarse invisible: red de seguridad
+    setTimeout(function () {
+      document.querySelectorAll('.reveal:not(.is-in)').forEach(function (n) {
+        var r = n.getBoundingClientRect();
+        if (r.top < window.innerHeight) n.classList.add('is-in');
+      });
+    }, 1200);
   })();
 
   /* ---------------------------------------------------------
