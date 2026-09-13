@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Donde cada coche se mira dos veces · caramigo.es (rojo)</title>
+<meta name="description" content="Coches de ocasión revisados uno a uno en Aldaia, València. 36 vehículos en stock, financiación a medida y entrega en toda España.">
+<link rel="icon" href="img/brand/favicon.png">
+<link rel="preload" as="font" type="font/woff2" href="fonts/bebas-neue-400-latin.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="fonts/barlow-500-latin.woff2" crossorigin>
+<link rel="stylesheet" href="css/art.css">
+<link rel="stylesheet" href="css/tema-rojo.css">
+</head>
+<body>
+
+<a class="skip" href="#destacados">Saltar al catálogo de coches</a>
+
+<div class="bg" id="bg" data-webgl="initializing" aria-hidden="true">
+  <img class="bg__poster" src="video/showroom-poster.jpg" alt="" width="1280" height="720" draggable="false">
+  <video class="bg__video" id="bg-video" src="video/showroom-loop.mp4" poster="video/showroom-poster.jpg"
+         muted loop playsinline preload="auto" tabindex="-1" disablepictureinpicture disableremoteplayback></video>
+</div>
+
+<div class="stage">
+<main id="contenido">
+
+  <!-- ============ HERO ============ -->
+  <section id="top" class="screen screen--hero" data-drift-root>
+
+    <button class="motion-toggle" id="motion-toggle" type="button">
+      <svg viewBox="0 0 12 14" aria-hidden="true" focusable="false"><rect x="0" y="0" width="4" height="14"/><rect x="8" y="0" width="4" height="14"/></svg>
+      <span class="lbl">Pausar el movimiento</span>
+    </button>
+
+    <a class="hero-logo" href="#top" data-drift data-drift-y="36" aria-label="caramigo.es, inicio"><b>car</b>amigo<sup>.es</sup></a>
+
+    <nav class="hero-nav" aria-label="Secciones de la página">
+      <a href="#destacados">Coches</a>
+      <a href="#nosotros">Nosotros</a>
+      <a href="#financiacion">Financiación</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+
+    <p class="hero-desc" data-drift data-drift-y="54">
+      <span class="hero-desc__br" aria-hidden="true">[</span>
+      <span>
+        <span>Seleccionamos coches de ocasión</span>
+        <span>revisados uno a uno, con historial</span>
+        <span>transparente y entrega en toda España.</span>
+        <span>Estamos en Aldaia, València.</span>
+      </span>
+      <span class="hero-desc__br hero-desc__br--end" aria-hidden="true">]</span>
+    </p>
+
+    <h1 class="hero-title" id="hero-title" data-drift data-drift-y="76">
+      <span class="sr-only">Donde cada coche se mira dos veces</span>
+      <span class="hero-title__v" aria-hidden="true">
+        <span class="hero-title__l"><span data-w="0">DONDE</span></span>
+        <span class="hero-title__l hero-title__l--in"><span data-w="1">CADA COCHE</span></span>
+        <span class="hero-title__l hero-title__l--split"><span data-w="2">SE MIRA</span><span data-w="3">DOS</span></span>
+        <span class="hero-title__l"><span data-w="4">VECES</span></span>
+      </span>
+    </h1>
+
+    <div class="hero-cue" aria-hidden="true">
+      <svg viewBox="0 0 16 40"><path d="M8 1V37M2.5 31.5 8 37l5.5-5.5"/></svg>
+    </div>
+  </section>
+
+  <!-- ============ DESTACADOS ============ -->
+  <section id="destacados" class="screen screen--naranja gal" tabindex="-1" aria-labelledby="t-dest">
+    <div class="gal__head">
+      <p class="gal__eyebrow">01 — Destacados</p>
+      <h2 class="gal__title" id="t-dest">Los que se miran<br>dos veces</h2>
+      <dl class="stats">
+        <div><dt>Coches en stock</dt><dd>36</dd></div>
+        <div><dt>Valoración en Google</dt><dd>4,7</dd></div>
+        <div><dt>Vehículos revisados</dt><dd>100%</dd></div>
+        <div><dt>Provincias con entrega</dt><dd>52</dd></div>
+      </dl>
+    </div>
+
+    <div class="gal__rail" id="gal-rail" data-visible="false">
+      <nav class="gal__nav" aria-label="Coches destacados">
+        <ol id="gal-pages"></ol>
+      </nav>
+    </div>
+
+    <div class="gal__stack" id="gal-stack"></div>
+  </section>
+
+  <!-- ============ STOCK ============ -->
+  <section id="stock" class="screen screen--blanco stock" aria-labelledby="t-stock">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="sec-eyebrow">02 — Stock</p>
+        <h2 class="sec-title" id="t-stock">Todo el stock</h2>
+        <p class="sec-lead">Cada coche pasa una revisión completa antes de salir a la venta. Precio cerrado, historial a la vista y opción de financiación en todos ellos.</p>
+      </div>
+
+      <ul class="filters" id="filters" role="list">
+        <li><button type="button" data-filter="todos" aria-pressed="true">Todos</button></li>
+        <li><button type="button" data-filter="Cuatro_por_cuatro_suv" aria-pressed="false">SUV</button></li>
+        <li><button type="button" data-filter="Berlina" aria-pressed="false">Berlina</button></li>
+        <li><button type="button" data-filter="Compacto" aria-pressed="false">Compacto</button></li>
+        <li><button type="button" data-filter="Familiar" aria-pressed="false">Familiar</button></li>
+        <li><button type="button" data-filter="deportivo" aria-pressed="false">Deportivos</button></li>
+        <li><button type="button" data-filter="eco" aria-pressed="false">Híbrido y eléctrico</button></li>
+        <li><button type="button" data-filter="auto" aria-pressed="false">Automático</button></li>
+      </ul>
+
+      <p class="results" id="resultados" role="status" aria-live="polite" aria-atomic="true">36 coches disponibles</p>
+
+      <ul class="grid" id="grid" role="list"></ul>
+    </div>
+  </section>
+
+  <!-- ============ POR QUÉ ============ -->
+  <section id="por-que" class="screen screen--blanco pillars" aria-labelledby="t-why">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="sec-eyebrow">03 — Por qué caramigo</p>
+        <h2 class="sec-title" id="t-why">Todo lo que<br>necesitas</h2>
+      </div>
+      <ol role="list">
+        <li>
+          <b>01</b>
+          <h3>Precios competitivos</h3>
+          <p>Vehículos de calidad con precios ajustados al mercado, para ofrecerte la mejor relación calidad-precio.</p>
+        </li>
+        <li>
+          <b>02</b>
+          <h3>Entrega a domicilio</h3>
+          <p>Recibe tu nuevo coche en cualquier punto de España de forma rápida, cómoda y totalmente segura.</p>
+        </li>
+        <li>
+          <b>03</b>
+          <h3>Financiación fácil</h3>
+          <p>Opciones flexibles y un proceso sencillo para que estrenes coche sin complicaciones.</p>
+        </li>
+        <li>
+          <b>04</b>
+          <h3>Vehículos revisados</h3>
+          <p>Todos nuestros coches pasan una revisión completa para garantizar seguridad, fiabilidad y tranquilidad.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ============ NOSOTROS ============ -->
+  <section id="nosotros" class="screen screen--blanco nosotros" aria-labelledby="t-nos">
+    <div class="nosotros__copy">
+      <p class="sec-eyebrow">04 — Sobre nosotros</p>
+      <h2 class="sec-title" id="t-nos">Comprar<br>sin líos</h2>
+      <p class="sec-lead">Creemos que comprar un coche debe ser una experiencia sencilla y sin complicaciones. Por eso te ofrecemos vehículos cuidadosamente seleccionados, asesoramiento profesional y un servicio cercano desde el primer contacto hasta la entrega de llaves.</p>
+      <p class="nosotros__claim">En CarAmigo, tu tranquilidad es nuestra prioridad.</p>
+    </div>
+
+    <figure class="nosotros__media">
+      <video id="video-nosotros" class="nosotros__video" controls preload="none"
+             poster="video/nosotros-poster.jpg" playsinline
+             aria-label="Vídeo de presentación de caramigo.es, 24 segundos, sin narración">
+        <source src="video/nosotros.mp4" type="video/mp4">
+      </video>
+      <figcaption class="sr-only">Vídeo de presentación del concesionario caramigo.es en Aldaia, València.</figcaption>
+    </figure>
+  </section>
+
+  <!-- ============ FINANCIACIÓN ============ -->
+  <section id="financiacion" class="screen screen--blanco fin" aria-labelledby="t-fin">
+    <div class="fin__copy">
+      <p class="sec-eyebrow">05 — Financiación</p>
+      <h2 class="sec-title" id="t-fin">Estrena coche<br>sin complicaciones</h2>
+      <p class="sec-lead">Buscamos la financiación que mejor encaje contigo: cuotas cómodas, condiciones claras y respuesta rápida. Te decimos lo que pagas antes de firmar nada.</p>
+    </div>
+    <div>
+      <ul class="fin__list" role="list">
+        <li>Estudio sin compromiso y respuesta en el mismo día.</li>
+        <li>Cuotas desde 120 € al mes según modelo y entrada.</li>
+        <li>Aceptamos tu coche actual como entrada.</li>
+        <li>Garantía incluida en todos los vehículos.</li>
+      </ul>
+      <p style="margin-top:26px">
+        <a class="btn btn--solid" href="https://wa.me/34641516102" target="_blank" rel="noopener">
+          Solicitar financiación
+          <span class="sr-only"> (se abre WhatsApp en una ventana nueva)</span>
+          <svg viewBox="0 0 28 12" aria-hidden="true" focusable="false"><path d="M0 6h26M20.5.5 26 6l-5.5 5.5"/></svg>
+        </a>
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ SÍGUENOS ============ -->
+  <section id="social" class="screen screen--blanco social" aria-labelledby="t-social">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="sec-eyebrow">06 — Síguenos</p>
+        <h2 class="sec-title" id="t-social">Nos ves mejor<br>en vídeo</h2>
+        <p class="sec-lead">Cada coche que entra en el concesionario lo enseñamos por dentro y por fuera en TikTok e Instagram. 12.800 personas ya nos siguen.</p>
+      </div>
+
+      <dl class="stats stats--start">
+        <div><dt>Seguidores en Instagram</dt><dd>12.800</dd></div>
+        <div><dt>Publicaciones</dt><dd>563</dd></div>
+        <div><dt>Coches nuevos al mes</dt><dd>+15</dd></div>
+      </dl>
+
+      <p class="social__btns">
+        <a class="btn btn--solid" href="https://www.tiktok.com/@caramigo.es" target="_blank" rel="noopener">
+          <svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M16.9 2h-3.2v13.3a2.9 2.9 0 1 1-2.3-2.83V9.2a6.1 6.1 0 1 0 5.5 6.07V9.13a7.3 7.3 0 0 0 4.1 1.27V7.2a4.2 4.2 0 0 1-4.1-4.1V2z"/></svg><span>TikTok</span> <span aria-hidden="true">↗</span>
+          <span class="sr-only"> (se abre TikTok en una ventana nueva)</span>
+        </a>
+        <a class="btn" href="https://www.instagram.com/caramigo.es/" target="_blank" rel="noopener">
+          <svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="2.8" y="2.8" width="18.4" height="18.4" rx="5.4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4.4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.4" cy="6.6" r="1.5"/></svg><span>Instagram</span> <span aria-hidden="true">↗</span>
+          <span class="sr-only"> (se abre Instagram en una ventana nueva)</span>
+        </a>
+      </p>
+
+      <ul class="tiles" role="list">
+          <li class="tile tile--video"><img src="img/social/tile-1.jpg" alt="Renault Clio rojo grabado dentro del concesionario" width="440" height="550" loading="lazy" decoding="async"><span class="tile__play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 6.5v11l9-5.5z"/></svg></span></li>
+          <li class="tile tile--video"><img src="img/social/tile-2.jpg" alt="Frontal del Renault Clio con el logotipo de caramigo.es" width="440" height="550" loading="lazy" decoding="async"><span class="tile__play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 6.5v11l9-5.5z"/></svg></span></li>
+          <li class="tile tile--video"><img src="img/social/tile-3.jpg" alt="Detalle del piloto trasero de un Renault Clio" width="440" height="550" loading="lazy" decoding="async"><span class="tile__play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 6.5v11l9-5.5z"/></svg></span></li>
+          <li class="tile"><img src="img/social/tile-4.jpg" alt="Mercedes-Benz Clase E blanco en el expositor" width="440" height="550" loading="lazy" decoding="async"></li>
+          <li class="tile"><img src="img/social/tile-5.jpg" alt="BMW X7 gris en el expositor" width="440" height="550" loading="lazy" decoding="async"></li>
+          <li class="tile"><img src="img/social/tile-6.jpg" alt="Porsche Boxster negro en el expositor" width="440" height="550" loading="lazy" decoding="async"></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ CONTACTO ============ -->
+  <section id="contacto" class="screen screen--blanco contacto" aria-labelledby="t-con">
+    <h2 class="contacto__title" id="t-con">HABLAMOS</h2>
+
+    <div class="panel">
+      <p class="panel__eyebrow">07 — Escríbenos</p>
+
+      <form class="form" id="form" novalidate>
+        <div class="form__grid">
+          <div class="form__col">
+            <label class="field">
+              <span>Nombre</span>
+              <input name="nombre" autocomplete="given-name" required>
+            </label>
+            <label class="field">
+              <span>Teléfono</span>
+              <input name="telefono" type="tel" autocomplete="tel" required>
+            </label>
+            <label class="field">
+              <span>Email</span>
+              <input name="email" type="email" autocomplete="email" required>
+            </label>
+          </div>
+
+          <label class="field">
+            <span>¿Qué coche estás buscando?</span>
+            <textarea name="mensaje" rows="6" required></textarea>
+          </label>
+        </div>
+
+        <div class="form__foot">
+          <label class="consent">
+            <input name="consent" type="checkbox" required>
+            <span>Acepto que caramigo.es se ponga en contacto conmigo sobre esta consulta.</span>
+          </label>
+
+          <button class="btn" type="submit">
+            <span id="form-btn-txt">Enviar</span>
+            <svg viewBox="0 0 28 12" aria-hidden="true" focusable="false"><path d="M0 6h26M20.5.5 26 6l-5.5 5.5"/></svg>
+          </button>
+        </div>
+
+        <p class="form__status" id="form-status" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<footer class="pie screen screen--blanco">
+  <div class="pie__lead">
+    <a class="pie__logo" href="#top" aria-label="caramigo.es, volver arriba"><b>car</b>amigo<sup>.es</sup></a>
+    <p class="pie__claim">Concesionario de coches de ocasión en Aldaia, València. Vehículos revisados, historial transparente y entrega en toda España.</p>
+  </div>
+
+  <div class="pie__dir">
+    <div>
+      <p class="pie__label">Dónde estamos</p>
+      <p>Carrer Solidaritat, 41<br>46960 Aldaia, València</p>
+      <p style="margin-top:14px">
+        <a href="https://maps.google.com/?q=Carrer+Solidaritat+41+Aldaia+Valencia" target="_blank" rel="noopener">
+          Ver en Google Maps <span aria-hidden="true">↗</span>
+          <span class="sr-only"> (se abre Google Maps en una ventana nueva)</span>
+        </a>
+      </p>
+    </div>
+
+    <div>
+      <p class="pie__label">Horario</p>
+      <p>Lunes a viernes<br>10:00 – 13:00 · 15:00 – 19:00<br>Sábados 10:00 – 15:00</p>
+    </div>
+
+    <div>
+      <p class="pie__label">Redes</p>
+      <div class="pie__links">
+        <a href="https://www.tiktok.com/@caramigo.es" target="_blank" rel="noopener"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M16.9 2h-3.2v13.3a2.9 2.9 0 1 1-2.3-2.83V9.2a6.1 6.1 0 1 0 5.5 6.07V9.13a7.3 7.3 0 0 0 4.1 1.27V7.2a4.2 4.2 0 0 1-4.1-4.1V2z"/></svg>TikTok<span class="sr-only"> (se abre en una ventana nueva)</span></a>
+        <a href="https://www.instagram.com/caramigo.es/" target="_blank" rel="noopener"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="2.8" y="2.8" width="18.4" height="18.4" rx="5.4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4.4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.4" cy="6.6" r="1.5"/></svg>Instagram<span class="sr-only"> (se abre en una ventana nueva)</span></a>
+      </div>
+    </div>
+
+    <div>
+      <p class="pie__label">Contacto</p>
+      <p>
+        <a href="tel:+34641516102"><span class="sr-only">Llamar al </span>641 51 61 02</a><br>
+        <a href="https://wa.me/34641516102" target="_blank" rel="noopener">
+          WhatsApp <span aria-hidden="true">↗</span>
+          <span class="sr-only"> (se abre WhatsApp en una ventana nueva)</span>
+        </a>
+      </p>
+    </div>
+  </div>
+
+  <div class="pie__bottom">
+    <p>© <span id="year">2026</span> caramigo.es</p>
+    <p>4,7 ★ en Google</p>
+    <a href="#top">Volver arriba <span aria-hidden="true">↑</span></a>
+  </div>
+</footer>
+</div>
+
+<!-- ============ FICHA ============ -->
+<dialog class="dlg" id="ficha" aria-labelledby="ficha-title">
+  <button class="dlg__close" type="button" data-close>
+    <svg viewBox="0 0 14 14" aria-hidden="true" focusable="false"><path d="M1 1l12 12M13 1L1 13"/></svg>
+    <span class="sr-only">Cerrar ficha</span>
+  </button>
+
+  <div class="dlg__in">
+    <div class="dlg__media">
+      <img class="dlg__photo" id="ficha-photo" src="" alt="">
+      <button class="dlg__navbtn dlg__navbtn--prev" type="button" id="ficha-prev">
+        <svg viewBox="0 0 13 13" aria-hidden="true" focusable="false"><path d="M8.5 1 3 6.5 8.5 12"/></svg>
+        <span class="sr-only">Foto anterior</span>
+      </button>
+      <button class="dlg__navbtn dlg__navbtn--next" type="button" id="ficha-next">
+        <svg viewBox="0 0 13 13" aria-hidden="true" focusable="false"><path d="M4.5 1 10 6.5 4.5 12"/></svg>
+        <span class="sr-only">Foto siguiente</span>
+      </button>
+      <p class="dlg__count" id="ficha-count" role="status" aria-live="polite" aria-atomic="true"></p>
+    </div>
+
+    <div class="dlg__info">
+      <h2 class="dlg__title" id="ficha-title" tabindex="-1"></h2>
+      <p class="dlg__version" id="ficha-version"></p>
+      <p class="dlg__price" id="ficha-price"></p>
+      <p class="dlg__month" id="ficha-month"></p>
+      <dl class="dlg__specs" id="ficha-specs"></dl>
+      <div class="dlg__cta">
+        <a class="btn btn--solid" id="ficha-wa" href="https://wa.me/34641516102" target="_blank" rel="noopener">
+          Preguntar por este coche
+          <span class="sr-only"> (se abre WhatsApp en una ventana nueva)</span>
+        </a>
+        <a class="btn" href="tel:+34641516102"><span class="sr-only">Llamar al </span>641 51 61 02</a>
+      </div>
+    </div>
+  </div>
+</dialog>
+
+<script src="data-cars.js"></script>
+<script src="js/art.js"></script>
+</body>
+</html>

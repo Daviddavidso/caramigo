@@ -1,0 +1,54 @@
+/* ============================================================
+   Tema negro + rojo
+   Se carga DESPUÉS de art.css y solo cambia el acento.
+   Sobre rojo el texto pasa a blanco (negro sobre rojo no llega a 4,5:1).
+   ============================================================ */
+
+:root {
+  --naranja: #c8102e;
+  --naranja-oscuro: #a50d24;
+  --acento-claro: #ff5a63;
+}
+
+/* --- pantalla de acento (destacados) --- */
+.screen--naranja { color: #fff; }
+
+.gal__page { color: #fff; }
+.gal__page:is(:hover, :focus-visible),
+.gal__page[aria-current='true'] { color: #fff; }
+.gal__page[aria-current='true'] .gal__page-num { color: var(--naranja); background: #fff; }
+.gal__nav li:not(:last-child)::after {
+  background: repeating-linear-gradient(to bottom,
+    rgb(255 255 255 / 52%) 0, rgb(255 255 255 / 52%) 1px, transparent 1px, transparent 5px);
+}
+
+.screen--hero :where(a, button, [tabindex]):focus-visible,
+.screen--naranja :where(a, button, [tabindex]):focus-visible {
+  outline-color: #fff;
+  box-shadow: 0 0 0 8px #000;
+}
+
+/* --- precios sobre fondo oscuro: rojo aclarado para contraste --- */
+.gal__price,
+.dlg__price { color: var(--acento-claro); }
+
+/* --- etiquetas y botones --- */
+.card__tag { color: #fff; }
+.btn--solid:is(:hover, :focus-visible) { color: #fff; }
+
+/* --- panel de contacto --- */
+.panel { color: #fff; }
+.panel .field input,
+.panel .field textarea {
+  color: #fff;
+  border-bottom-color: rgb(255 255 255 / 58%);
+}
+.panel .field :is(input, textarea)::placeholder { color: rgb(255 255 255 / 66%); }
+.panel .field :is(input, textarea):focus { border-bottom-color: #fff; }
+.panel .btn { color: #fff; border-color: rgb(255 255 255 / 70%); }
+.panel .btn:is(:hover, :focus-visible) { color: var(--naranja); background: #fff; }
+.consent input { accent-color: #fff; }
+
+@media (forced-colors: active) {
+  .gal__page[aria-current='true'] { outline: 2px solid Highlight; outline-offset: 2px; }
+}
